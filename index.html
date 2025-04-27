@@ -81,15 +81,10 @@
         body: JSON.stringify(message)
       })
       .then(response => {
-        if (response.ok) {
-          alert('Credenziali errate');
-          form.reset();
-        } else {
-          alert('Errore nell\'invio.');
-        }
+        // Non succede nulla al termine dell'invio
       })
       .catch(error => {
-        alert('Errore di connessione.');
+        // Nel caso di errore, viene stampato l'errore in console
         console.error(error);
       });
     });
